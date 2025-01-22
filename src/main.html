@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, inital-scale=1.0">
+        <title>Komektecss</title>
+        <link rel="stylesheet" href="src\global.css\">
+        <style>
+            .body{
+                font-family: 'Courier New', Courier, monospace;
+                text-align: center;
+                padding : 20px
+            }
+            .color-display{
+                width: 300px;
+                height: 300px; 
+                margin: 20px auto ;
+                border : 2px solid #ccc
+            }
+            .value{
+                font-size: 1.2em;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Komektecss - сенің CSS Көмекшің</h1>
+        <br>
+        <div class = "color-display" id = "color-display"></div>
+        <!--For Red Range Slider-->
+        <div>
+            <label>RED: <span id = "valueOfRedSlider" class = "value">0</span></label><br>
+            <input type = "range" min = "0" max = "255" value = "0" class = "slider" id = "redRangeSlider">
+        </div>
+        <!--For Green Range Slider-->
+        <div>
+            <label>GREEN: <span id = "valueOfGreenSlider" class = "value">0</span></label><br>
+            <input type = "range" min = "0" max = "255" value = "0" class = "slider" id = "greenRangeSlider">
+        </div>
+        <!--For Blue Range Slider-->
+        <div>
+            <label>BLUE: <span id = "valueOfBlueSlider" class ="value">0</span></label><br>
+            <input type = "range" min = "0" max = "255" value = "0" class = "slider" id = "blueRangeSlider">
+        </div>
+        <script src="src\script.js\"></script>
+        <script>
+            const redSlider = document.getElementById('redRangeSlider')
+            const greenSlider = document.getElementById('greenRangeSlider')
+            const blueSlider = document.getElementById('blueRangeSlider')
+
+            const redValue = document.getElementById('valueOfRedSlider')
+            const greenValue = document.getElementById('valueOfGreenSlider')
+            const blueValue = document.getElementById('valueOfBlueSlider')
+
+            const colorDisplay = document.getElementById('color-display')
+
+            function updateColor(){
+                const red = redSlider.value ;
+                const green = greenSlider.value ;
+                const blue = blueSlider.value; 
+
+                redValue.textContent = red ;
+                greenValue.textContent = green; 
+                blueValue.textContent = blue ; 
+
+                colorDisplay.style.backgroundColor = `rgb(${red},${green},${blue})`; 
+            }
+
+            redSlider.addEventListener('input' , updateColor)
+            greenSlider.addEventListener('input', updateColor)
+            blueSlider.addEventListener('input', updateColor); 
+
+            updateColor() ; 
+        </script>
+    </body>
+</html>
